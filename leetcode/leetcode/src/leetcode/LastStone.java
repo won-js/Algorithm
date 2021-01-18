@@ -1,21 +1,23 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.PriorityQueue;
 
 public class LastStone {
     public int lastStoneWeight(int[] stones) {
-        Arrays.sort(stones);
-        List<Integer> list = new ArrayList<>();
-        list.sort((a,b) -> a-b);
-        while(stones.length > 1) {
-        	if(stones[stones.length-1] == stones[stones.length-2]) {
-        		int[] array = new int[stones.length-2];
-        		
-        	}else {
-        		
-        	}
-        }
+    	PriorityQueue<Integer> queue = new PriorityQueue<Integer>((a,b) -> b-a);
+    	for(int stone : stones) {
+    		queue.add(stone);
+    	}
+    	
+    	int y,x;
+    	while(queue.size() > 1)  {
+    		y = queue.poll();
+    		x = queue.poll();
+    		if(y >= x) {
+    			queue.add(y-x);
+    		}
+    	}
+    	
+    	return queue.size() == 0 ? 0 : queue.poll();
     }
 }

@@ -1,26 +1,36 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 class Solution {
-    public int[] solution(int n, int s) {
-    	List<Integer> list = new ArrayList<>();
-    	if(s<n) return new int[] {-1};
-    	for(int i = n; i>0; i--) {
-    		int a = (int) Math.ceil(s/i);
-    		list.add(a);
-    		s -= a;
+    public int solution(int m, int n, int[][] puddles) {
+    	
+    	//puddle map
+    	int [][] puddleMap = new int[m][n];
+    	for(int [] puddle : puddles) {
+    		puddleMap[puddle[0]-1][puddle[1]-1]++;
     	}
     	
-    	list.sort((a,b) -> a-b);
-    	int[] answer = new int[list.size()];
-    	for(int i=0; i<list.size(); i++) {
-    		answer[i] = list.get(i);
+    	// route
+    	int[][] route = new int[m][n];
+    	
+    	for(int i =0; i < m; i++) {
+    		if(puddleMap[i][0] == 1) break;
+    		route[i][0]++;
     	}
     	
-        return answer;
+    	for(int i = 0; i < n; i++) {
+    		if(puddleMap[0][i] == 1) break;
+    		route[0][i]++;
+    	}
+    	
+    	//go
+    	for(int i =1; i < m; i++) {
+    		for(int j=1; j < n ; j++) {
+    			if(puddleMap[i][j] == 1) continue;
+    			route[i][j] = (route[i-1][j] + route[i][j-1])%1000000007;
+    		}
+    	}
+    	
+    	return route[m-1][n-1];
     }
    
 }

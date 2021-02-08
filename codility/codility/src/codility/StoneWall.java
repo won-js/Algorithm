@@ -12,6 +12,7 @@ public class StoneWall {
     	for(int i = 1; i<H.length; i++) {
     		if(stack.peek() < H[i]) {
     			answer++;
+    			stack.add(H[i]);
     		} else if(stack.peek() > H[i]) {
     			while(!stack.isEmpty()) {
     				if(stack.peek() > H[i]) {
@@ -20,13 +21,13 @@ public class StoneWall {
     					break;
     				}else {
     					answer++;
+    					break;
     				}
     			}
     			if(stack.isEmpty()) answer++;
     			stack.add(H[i]);
     		}
     	}
-    	
     	return answer;
     }
 }

@@ -34,8 +34,8 @@ public class Fish {
     	}
     	
     	int now = 1;
-    	stack.add(A[a+1]);
-    	for(int i = a+2; i < b-1; i++) {
+    	stack.add(A[a]);
+    	for(int i = a+1; i < b; i++) {
     		if(now == B[i]) {
     			stack.add(A[i]);
     		} else {

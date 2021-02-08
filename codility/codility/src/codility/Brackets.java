@@ -11,6 +11,7 @@ public class Brackets {
     		if(c == '(' || c == '[' || c == '{') {
     			stack.add(c);
     		} else {
+    			if(stack.size() == 0) return 0;
     			if(c == ')' && stack.peek() == '(') {
     				stack.pop();
     			} else if(c == ']' && stack.peek() == '[') {

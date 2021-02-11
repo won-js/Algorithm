@@ -16,7 +16,7 @@ for i in range(len(testcase)):
     # 그릇 만들기
     for i in range(N):
         queue.append(prior[i])
-        idx.append(i)n
+        idx.append(i)
 
     maximum = max(queue)
     count = 0

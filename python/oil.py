@@ -18,4 +18,3 @@ for i in range(len(changes)-1):
     cost += sum(dists[changes[i]:changes[i+1]])*oils[changes[i]]
 
 print(cost)
-     

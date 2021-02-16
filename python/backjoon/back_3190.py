@@ -11,10 +11,22 @@ for _ in range(k):
     board[x][y] = 1
 
 m = int(input().rstrip())
-dir = []
+future = []
 
 for _ in range(m):
     after, direction = input().rstrip().split(" ")
-    dir.append((int(after), direction))
+    future.append((int(after), direction))
 
-print(dir[0][0])
+head = [0,0]
+tail = [0,0]
+count = 0
+idx = 0
+
+
+while True:
+    count+=1
+    if count = future[idx][0]:
+        idx += 1
+        char = future[idx][1]
+
+        
